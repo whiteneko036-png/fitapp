@@ -840,3 +840,153 @@ function notify(title, body){
     if(!("Notification" in window) || Notification.permission !== "granted") return;
     if(navigator.serviceWorker && navigator.serviceWorker.controller){
       navigator.serviceWorker.ready.then(reg=>{
+function notify(title, body){
+  try{
+    if(!("Notification" in window) || Notification.permission !== "granted") return;
+    if(navigator.serviceWorker && navigator.serviceWorker.controller){
+      navigator.serviceWorker.ready.then(reg=>{
+        reg.showNotification(title, {
+          body: body,
+          icon: "icon-192.png",
+          badge: "icon-192.png",
+          vibrate: [200,100,200],
+          tag: "fitapp"
+        });
+      });
+    } else {
+      new Notification(title, {body: body});
+    }
+  }catch(e){}
+}
+
+let reminderTimer = null;
+function scheduleReminder(){
+  if(reminderTimer) clearTimeout(reminderTimer);
+  if(!reminder.enabled) return;
+
+  const now = new Date();
+  const [h, m] = reminder.time.split(":").map(Number);
+  const target = new Date();
+  target.setHours(h, m, 0, 0);
+  if(target <= now) target.setDate(target.getDate() + 1);
+
+  const ms = target - now;
+  reminderTimer = setTimeout(()=>{
+    if(reminder.days.includes(new Date().getDay()) || reminder.days.includes(0)){
+      notify("Пора тренироваться! 💪", "Сегодня по плану занятие. Откройте приложение.");
+    }
+    scheduleReminder();
+  }, ms);
+}
+
+/* ---------- ИИ-АССИСТЕНТ (GEMINI) ---------- */
+const SYSTEM_PROMPT = `Ты — фитнес-ассистент в приложении для тренировок.
+Отвечай кратко, дружелюбно, на русском языке.
+Пользователь занимается без специального оборудования (домашние тренировки).
+Если вопрос про здоровье или боль — советуй обратиться к врачу.
+Не назначай медицинские препараты и диеты для похудения.`;
+
+function addMsg(text, cls){
+  const wrap = document.getElementById("chatWrap");
+  const div = document.createElement("div");
+  div.className = "msg " + cls;
+  div.textContent = text;
+  wrap.appendChild(div);
+  wrap.scrollTop = wrap.scrollHeight;
+  return div;
+}
+
+async function askGemini(question){
+  if(!apiKey){
+    addMsg("Чтобы включить ИИ, добавьте ключ Gemini в разделе «Профиль». Ключ бесплатный: aistudio.google.com/apikey", "bot");
+    return;
+  }
+  const typing = addMsg("печатает...", "bot typing");
+
+  const userContext = profile
+    ? `Пользователь: ${profile.name}, ${profile.age} лет, рост ${profile.height} см, вес ${profile.weight} кг. ` +
+      `Цели: ${profile.goals.map(g=>GOAL_LABELS[g]).join(", ")}. Интенсивность: ${INTENSITY[profile.intensity].label}. ` +
+      `Целевой вес: ${profile.targetWeight} кг за ${profile.weeks} недель.`
+    : "";
+
+  try{
+    const res = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey,
+      {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          systemInstruction: {parts: [{text: SYSTEM_PROMPT}]},
+          contents: [{
+            parts: [{text: userContext + "\n\nВопрос: " + question}]
+          }],
+          generationConfig: {temperature: 0.7, maxOutputTokens: 800}
+        })
+      }
+    );
+
+    if(!res.ok){
+      const errText = await res.text();
+      typing.remove();
+      addMsg("Ошибка API (" + res.status + "). Проверьте ключ или попробуйте позже.\n\n" + errText.slice(0, 200), "bot");
+      return;
+    }
+
+    const data = await res.json();
+    const answer =
+      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "Не удалось получить ответ.";
+    typing.remove();
+    addMsg(answer, "bot");
+  }catch(e){
+    typing.remove();
+    addMsg("Ошибка сети: " + e.message, "bot");
+  }
+}
+
+document.getElementById("chatSend").onclick = ()=>{
+  const input = document.getElementById("chatInput");
+  const q = input.value.trim();
+  if(!q) return;
+  addMsg(q, "user");
+  input.value = "";
+  askGemini(q);
+};
+
+document.getElementById("chatInput").addEventListener("keydown", (e)=>{
+  if(e.key === "Enter") document.getElementById("chatSend").click();
+});
+
+document.querySelectorAll(".chat-hints .chip").forEach(c=>{
+  c.onclick = ()=>{
+    document.getElementById("chatInput").value = c.textContent;
+    document.getElementById("chatSend").click();
+  };
+});
+
+/* ---------- РЕГИСТРАЦИЯ SERVICE WORKER ---------- */
+if("serviceWorker" in navigator){
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("sw.js").catch(()=>{});
+  });
+}
+
+/* ---------- СТАРТ ---------- */
+window.addEventListener("load", ()=>{
+  setTimeout(()=>{
+    document.getElementById("splash").classList.add("hide");
+
+    if(profile){
+      historyStack = [];
+      show("home");
+      renderHome();
+      buildReminderDays();
+      scheduleReminder();
+    } else {
+      show("onboarding");
+      renderOnbStep();
+    }
+  }, 900);
+});
+
+function buildReminderDays(){ /* зарезервировано */ }
