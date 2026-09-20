@@ -1,5 +1,5 @@
 /* =========================================================
-   ТРЕНАЖЁР — логика приложения (полная версия)
+   ТРЕНАЖЁР — logic
    ========================================================= */
 
 /* ---------- БАЗА УПРАЖНЕНИЙ (MET = расход энергии) ---------- */
@@ -8,11 +8,11 @@ const EXERCISES = {
     {name:"Ягодичный мост", emoji:"🍑", reps:15, met:3.5, target:"Ягодицы",
      desc:"Лягте на спину, ноги согнуты. Поднимайте таз вверх, сжимая ягодицы в верхней точке. Задержитесь на 2 секунды."},
     {name:"Приседания", emoji:"🦵", reps:15, met:5.0, target:"Ягодицы, ноги",
-     desc:"Ноги на ширине плеч. Опускайтесь до параллели бёдер с полом, колени не выходят за носки. Пятки прижаты."},
+     desc:"Ноги на ширине плеч. Опускайтесь до параллели бёдер с полом, колени не выходят за носки."},
     {name:"Выпады назад", emoji:"🚶", reps:12, met:4.5, target:"Ягодицы",
      desc:"Из положения стоя отставьте ногу назад и опуститесь в выпад. Корпус держите вертикально."},
     {name:"Махи ногой в сторону", emoji:"🦵", reps:15, met:3.5, target:"Средняя ягодичная",
-     desc:"Стоя на четвереньках, поднимайте согнутую ногу в сторону до уровня бедра. Медленно."},
+     desc:"Стоя на четвереньках, поднимайте согнутую ногу в сторону до уровня бедра."},
     {name:"Ягодичный мост на одной ноге", emoji:"🍑", reps:10, met:4.0, target:"Ягодицы",
      desc:"Как обычный мост, но одна нога поднята. Половина подходов на каждой ноге."},
     {name:"Отведение ноги с резинкой", emoji:"🎗️", reps:20, met:3.5, target:"Ягодицы",
@@ -20,75 +20,75 @@ const EXERCISES = {
   ],
   abs: [
     {name:"Планка", emoji:"🧘", timer:40, met:3.5, target:"Пресс, кор",
-     desc:"Упор на предплечья и носки. Тело — прямая линия. Не поднимайте и не опускайте таз. Дышите ровно."},
+     desc:"Упор на предплечья и носки. Тело — прямая линия. Дышите ровно."},
     {name:"Скручивания", emoji:"🔸", reps:20, met:3.8, target:"Верхний пресс",
-     desc:"Лёжа на спине, руки за головой. Отрывайте лопатки от пола, поясница прижата. Не тяните шею руками."},
+     desc:"Лёжа на спине, руки за головой. Отрывайте лопатки от пола, поясница прижата."},
     {name:"Велосипед", emoji:"🚴", reps:20, met:4.5, target:"Пресс, косые",
-     desc:"Лёжа, руки за головой. Локтем к противоположному колену. Работайте медленно и контролированно."},
+     desc:"Лёжа, руки за головой. Локтем к противоположному колену. Медленно и контролированно."},
     {name:"Подъём ног лёжа", emoji:"🦵", reps:15, met:3.8, target:"Нижний пресс",
-     desc:"Лёжа на спине, руки вдоль тела. Поднимайте прямые ноги до 90°, опускайте медленно, не касаясь пола."},
+     desc:"Лёжа на спине, поднимайте прямые ноги до 90°, опускайте не касаясь пола."},
     {name:"Русский твист", emoji:"🔄", reps:20, met:4.0, target:"Косые мышцы",
-     desc:"Сидя с наклоном назад, ноги согнуты. Поворачивайте корпус влево-вправо. Можно с весом."},
+     desc:"Сидя с наклоном назад, поворачивайте корпус влево-вправо."},
     {name:"Боковая планка", emoji:"🧘", timer:30, met:3.5, target:"Косые мышцы",
-     desc:"Упор на бок на предплечье. Таз не провисает. Держите по 30 секунд на каждую сторону."}
+     desc:"Упор на бок на предплечье. Таз не провисает. По 30 секунд на каждую сторону."}
   ],
   legs: [
     {name:"Приседания", emoji:"🦵", reps:15, met:5.0, target:"Квадрицепс, ягодицы",
-     desc:"Спина прямая, колени направлены в сторону носков. Опускайтесь до параллели."},
+     desc:"Спина прямая, колени направлены в сторону носков."},
     {name:"Выпады", emoji:"🚶", reps:12, met:4.5, target:"Ноги, ягодицы",
-     desc:"Шаг вперёд и опустите колено почти до пола. Колено передней ноги над стопой."},
+     desc:"Шаг вперёд, колено почти до пола. Колено передней ноги над стопой."},
     {name:"Зашагивания на платформу", emoji:"🪜", reps:12, met:5.0, target:"Ноги, ягодицы",
-     desc:"Поставьте ногу на устойчивую опору. Поднимитесь усилием ноги на опоре, опуститесь контролированно."},
+     desc:"Нога на устойчивой опоре. Поднимитесь усилием ноги на опоре, опуститесь медленно."},
     {name:"Приседания с паузой", emoji:"⏸️", reps:12, met:5.0, target:"Ноги",
-     desc:"В нижней точке приседа задержитесь на 3 секунды. Увеличивает нагрузку без инвентаря."},
+     desc:"В нижней точке приседа задержитесь на 3 секунды."},
     {name:"Подъём на носки", emoji:"🦶", reps:20, met:3.5, target:"Икры",
-     desc:"Поднимайтесь на носки максимально высоко, задержитесь на секунду, медленно опуститесь."}
+     desc:"Поднимайтесь на носки максимально высоко, медленно опускайтесь."}
   ],
   back: [
     {name:"Супермен", emoji:"🦸", reps:15, met:3.5, target:"Разгибатели спины",
-     desc:"Лёжа на животе, одновременно поднимайте руки и ноги. Задержитесь на 2 секунды вверху."},
+     desc:"Лёжа на животе, поднимайте руки и ноги. Задержитесь на 2 секунды вверху."},
     {name:"Лодочка", emoji:"⛵", timer:30, met:3.5, target:"Спина, кор",
      desc:"Лёжа на животе поднимите руки, ноги и грудь. Удерживайте положение."},
     {name:"Обратные снежные ангелы", emoji:"👼", reps:15, met:3.5, target:"Верх спины",
-     desc:"Лёжа на животе, руки в стороны. Сводите лопатки и делайте движения руками вверх-вниз."},
+     desc:"Лёжа на животе, сводите лопатки, движения руками вверх-вниз."},
     {name:"Подтягивания / тяга", emoji:"🔙", reps:10, met:6.0, target:"Широчайшие",
-     desc:"Если есть турник — подтягивания. Без него используйте тягу резинки к поясу."}
+     desc:"Есть турник — подтягивания. Без него — тяга резинки к поясу."}
   ],
   chest: [
     {name:"Отжимания", emoji:"💪", reps:12, met:8.0, target:"Грудь, трицепс",
-     desc:"Руки шире плеч. Опускайтесь до касания грудью пола. Колени можно поставить на пол."},
-    {name:"Отжимания с узкой постановкой", emoji:"🦾", reps:10, met:8.0, target:"Трицепс, грудь",
-     desc:"Ладони под плечами, локти прижаты к телу. Опускайтесь медленно."},
+     desc:"Руки шире плеч. Опускайтесь до касания грудью пола."},
+    {name:"Отжимания узкой постановкой", emoji:"🦾", reps:10, met:8.0, target:"Трицепс, грудь",
+     desc:"Ладони под плечами, локти прижаты к телу."},
     {name:"Разведение рук с резинкой", emoji:"🎗️", reps:15, met:3.5, target:"Грудные",
-     desc:"Резинку за спину, руки в стороны. Сводите руки перед грудью, чувствуя напряжение в груди."}
+     desc:"Резинку за спину, сводите руки перед грудью."}
   ],
   arms: [
     {name:"Отжимания на трицепс", emoji:"🦾", reps:12, met:6.0, target:"Трицепс",
      desc:"Сидя на стуле, руки сзади на опоре. Опускайтесь и поднимайтесь усилием рук."},
     {name:"Сгибания с резинкой", emoji:"💪", reps:15, met:3.5, target:"Бицепс",
-     desc:"Встаньте на резинку, тяните ручки вверх, сгибая руки. Локти прижаты к корпусу."},
+     desc:"Встаньте на резинку, тяните ручки вверх, сгибая руки."},
     {name:"Обратные отжимания от пола", emoji:"🖐️", reps:12, met:6.0, target:"Трицепс",
-     desc:"Пальцы направлены назад. Отжимайтесь в таком положении, нагрузка пойдёт в трицепс."}
+     desc:"Пальцы направлены назад, нагрузка идёт в трицепс."}
   ],
   shoulders: [
     {name:"Разведение рук в стороны", emoji:"🎯", reps:15, met:3.5, target:"Средние дельты",
-     desc:"Поднимайте руки в стороны до уровня плеч с резинкой или без. Плечи не поднимайте вверх."},
+     desc:"Поднимайте руки в стороны до уровня плеч, плечи не поднимайте вверх."},
     {name:"Жим над головой", emoji:"⬆️", reps:12, met:5.0, target:"Плечи",
-     desc:"Руки с резинкой или весом поднимайте над головой, полностью выпрямляя руки."},
+     desc:"Поднимайте руки над головой, полностью выпрямляя."},
     {name:"Разведение с наклоном", emoji:"⬇️", reps:15, met:3.5, target:"Задние дельты",
      desc:"Наклон вперёд, руки в стороны и вверх. Сводите лопатки."}
   ],
   fullbody: [
     {name:"Бёрпи", emoji:"🔥", reps:10, met:9.0, target:"Всё тело",
-     desc:"Из стоя присесть, прыжком в упор лёжа, отжимание, прыжок обратно, выпрыгнуть вверх."},
+     desc:"Присесть, прыжком в упор лёжа, отжимание, прыжок обратно, выпрыгнуть вверх."},
     {name:"Приседания с прыжком", emoji:"⚡", reps:12, met:8.0, target:"Ноги, ягодицы",
-     desc:"Присели — выпрыгнули вверх. Приземляйтесь мягко на согнутые ноги."},
+     desc:"Присели — выпрыгнули вверх. Приземляйтесь мягко."},
     {name:"Скалолаз", emoji:"🧗", reps:20, met:8.0, target:"Кор, всё тело",
-     desc:"В упоре лёжа поочерёдно подтягивайте колени к груди в быстром темпе."},
+     desc:"В упоре лёжа поочерёдно подтягивайте колени к груди."},
     {name:"Выпады с прыжком", emoji:"🏃", reps:14, met:8.0, target:"Ноги",
-     desc:"Из выпада выпрыгните вверх, меняя ноги в воздухе. Мягкое приземление."},
+     desc:"Из выпада выпрыгните вверх, меняя ноги в воздухе."},
     {name:"Планка + скручивания", emoji:"🧘", reps:15, met:4.5, target:"Кор",
-     desc:"Из планки поворачивайте корпус в сторону, поднимая руку вверх."}
+     desc:"Из планки поворачивайте корпус, поднимая руку вверх."}
   ]
 };
 
@@ -109,239 +109,294 @@ const INTENSITY = {
 
 /* ---------- ХРАНИЛИЩЕ ---------- */
 const DB = {
-  get(k, def){ try{ const v = localStorage.getItem("fit_"+k); return v?JSON.parse(v):def; }catch(e){ return def; } },
-  set(k, v){ try{ localStorage.setItem("fit_"+k, JSON.stringify(v)); }catch(e){} },
-  del(k){ localStorage.removeItem("fit_"+k); }
+  get(k, def){
+    try{
+      const v = localStorage.getItem("fit_" + k);
+      return v ? JSON.parse(v) : def;
+    }catch(e){ return def; }
+  },
+  set(k, v){
+    try{ localStorage.setItem("fit_" + k, JSON.stringify(v)); }catch(e){}
+  },
+  del(k){ localStorage.removeItem("fit_" + k); }
 };
 
-let profile  = DB.get("profile", null);
-let stats    = DB.get("stats", {workouts:[], weights:[]});
-let reminder = DB.get("reminder", {time:"18:00", days:[1,3,5], enabled:false});
-let apiKey   = DB.get("apikey", "");
-let currentPlan = [];
+let profile      = DB.get("profile", null);
+let stats        = DB.get("stats", {workouts:[], weights:[]});
+let reminder     = DB.get("reminder", {time:"18:00", days:[1,3,5], enabled:false});
+let apiKey       = DB.get("apikey", "");
+let currentPlan  = [];
 let currentIndex = 0;
-let session = null;
+let session      = null;
+let onbStep      = 1;
+let onbGoals     = [];
+let onbIntensity = "";
 
 /* ---------- НАВИГАЦИЯ ---------- */
 const SCREENS = ["onboarding","home","workout","result","progress","ai","settings"];
 let historyStack = [];
 
-function show(name, addToHistory = true){
-  SCREENS.forEach(s=>{
-    const el = document.getElementById("screen-"+s);
+function show(name, addToHistory){
+  if(addToHistory === undefined) addToHistory = true;
+
+  for(let i = 0; i < SCREENS.length; i++){
+    const el = document.getElementById("screen-" + SCREENS[i]);
     if(el) el.classList.add("hidden");
-  });
-  const target = document.getElementById("screen-"+name);
+  }
+  const target = document.getElementById("screen-" + name);
   if(target) target.classList.remove("hidden");
 
-  document.getElementById("backBtn").style.display =
-    (name==="onboarding" || name==="home") ? "none" : "block";
+  const backBtn = document.getElementById("backBtn");
+  if(backBtn) backBtn.style.display = (name === "onboarding" || name === "home") ? "none" : "block";
 
-  const titles = {onboarding:"Профиль", home:"Главная", workout:"Тренировка",
-                  result:"Результат", progress:"Прогресс", ai:"ИИ-ассистент", settings:"Профиль"};
-  document.getElementById("pageTitle").textContent = titles[name] || "";
+  const titles = {
+    onboarding:"Профиль", home:"Главная", workout:"Тренировка",
+    result:"Результат", progress:"Прогресс", ai:"ИИ-ассистент", settings:"Профиль"
+  };
+  const pt = document.getElementById("pageTitle");
+  if(pt) pt.textContent = titles[name] || "";
 
-  document.getElementById("bottombar").style.display =
-    (name==="onboarding") ? "none" : "flex";
+  const bb = document.getElementById("bottombar");
+  if(bb) bb.style.display = (name === "onboarding") ? "none" : "flex";
 
-  document.querySelectorAll(".nav-btn").forEach(b=>{
-    b.classList.toggle("active", b.dataset.nav === name);
-  });
+  const navs = document.querySelectorAll(".nav-btn");
+  for(let i = 0; i < navs.length; i++){
+    navs[i].classList.toggle("active", navs[i].dataset.nav === name);
+  }
 
-  if(addToHistory && historyStack[historyStack.length-1] !== name){
+  if(addToHistory && historyStack[historyStack.length - 1] !== name){
     historyStack.push(name);
   }
-  window.scrollTo({top:0, behavior:"smooth"});
-  if(name==="progress") renderProgress();
-  if(name==="settings") renderSettings();
+  window.scrollTo(0, 0);
+
+  if(name === "progress") renderProgress();
+  if(name === "settings") renderSettings();
 }
 
-document.getElementById("backBtn").onclick = ()=>{
-  historyStack.pop();
-  const prev = historyStack.pop() || "home";
-  show(prev);
-};
+/* ---------- ОБРАБОТЧИКИ НАВИГАЦИИ ---------- */
+const backBtnEl = document.getElementById("backBtn");
+if(backBtnEl){
+  backBtnEl.onclick = function(){
+    historyStack.pop();
+    const prev = historyStack.pop() || "home";
+    show(prev);
+  };
+}
 
-document.querySelectorAll(".nav-btn").forEach(btn=>{
-  btn.onclick = ()=>{
-    const nav = btn.dataset.nav;
-    if(nav==="workout"){ startSelectedOrFirst(); return; }
+const navButtons = document.querySelectorAll(".nav-btn");
+for(let i = 0; i < navButtons.length; i++){
+  navButtons[i].onclick = function(){
+    const nav = navButtons[i].dataset.nav;
+    if(nav === "workout"){ startSelectedOrFirst(); return; }
     historyStack = [];
     show(nav);
   };
-});
-
-document.getElementById("menuBtn").onclick = ()=>{
-  historyStack = [];
-  show("settings");
-};
-
-/* ---------- ОНБОРДИНГ ---------- */
-let onbStep = 1;
-let onbGoals = [];
-let onbIntensity = "";
-
-function renderOnbStep(){
-  document.querySelectorAll(".onb-step").forEach(s=>{
-    s.classList.toggle("hidden", Number(s.dataset.step) !== onbStep);
-  });
-  document.querySelectorAll(".dot").forEach((d,i)=>{
-    d.classList.toggle("active", i <= onbStep-1);
-  });
-  document.getElementById("onbPrev").style.visibility = onbStep===1 ? "hidden" : "visible";
-  document.getElementById("onbNext").textContent = onbStep===5 ? "Создать профиль" : "Далее";
-  if(onbStep===4) updatePlanPreview();
 }
 
-document.getElementById("onbPrev").onclick = ()=>{
-  if(onbStep>1){ onbStep--; renderOnbStep(); }
-};
+const menuBtnEl = document.getElementById("menuBtn");
+if(menuBtnEl){
+  menuBtnEl.onclick = function(){
+    historyStack = [];
+    show("settings");
+  };
+}
 
-document.querySelectorAll("#goalChips .chip").forEach(chip=>{
-  chip.onclick = ()=>{
-    const g = chip.dataset.goal;
-    if(onbGoals.includes(g)){
-      onbGoals = onbGoals.filter(x=>x!==g);
-      chip.classList.remove("selected");
+/* ---------- ОНБОРДИНГ ---------- */
+function renderOnbStep(){
+  const steps = document.querySelectorAll(".onb-step");
+  for(let i = 0; i < steps.length; i++){
+    steps[i].classList.toggle("hidden", Number(steps[i].dataset.step) !== onbStep);
+  }
+  const dots = document.querySelectorAll(".dot");
+  for(let i = 0; i < dots.length; i++){
+    dots[i].classList.toggle("active", i <= onbStep - 1);
+  }
+  const prevB = document.getElementById("onbPrev");
+  if(prevB) prevB.style.visibility = (onbStep === 1) ? "hidden" : "visible";
+  const nextB = document.getElementById("onbNext");
+  if(nextB) nextB.textContent = (onbStep === 5) ? "Создать профиль" : "Далее";
+  if(onbStep === 4) updatePlanPreview();
+}
+
+const onbPrevEl = document.getElementById("onbPrev");
+if(onbPrevEl){
+  onbPrevEl.onclick = function(){
+    if(onbStep > 1){ onbStep--; renderOnbStep(); }
+  };
+}
+
+const goalChipEls = document.querySelectorAll("#goalChips .chip");
+for(let i = 0; i < goalChipEls.length; i++){
+  goalChipEls[i].onclick = function(){
+    const g = goalChipEls[i].dataset.goal;
+    if(onbGoals.indexOf(g) !== -1){
+      onbGoals = onbGoals.filter(function(x){ return x !== g; });
+      goalChipEls[i].classList.remove("selected");
     } else {
       onbGoals.push(g);
-      chip.classList.add("selected");
+      goalChipEls[i].classList.add("selected");
     }
   };
-});
+}
 
-document.querySelectorAll("#intensityList .radio-card").forEach(card=>{
-  card.onclick = ()=>{
-    onbIntensity = card.dataset.int;
-    document.querySelectorAll("#intensityList .radio-card").forEach(c=>c.classList.remove("selected"));
-    card.classList.add("selected");
+const intCards = document.querySelectorAll("#intensityList .radio-card");
+for(let i = 0; i < intCards.length; i++){
+  intCards[i].onclick = function(){
+    onbIntensity = intCards[i].dataset.int;
+    for(let j = 0; j < intCards.length; j++) intCards[j].classList.remove("selected");
+    intCards[i].classList.add("selected");
   };
-});
+}
 
 function readNum(id){
-  const v = parseFloat(document.getElementById(id).value);
+  const el = document.getElementById(id);
+  if(!el) return null;
+  const v = parseFloat(el.value);
   return isNaN(v) ? null : v;
+}
+function readInt(id){
+  const el = document.getElementById(id);
+  if(!el) return 0;
+  const v = parseInt(el.value, 10);
+  return isNaN(v) ? 0 : v;
 }
 
 function validateStep(step){
-  if(step===1){
-    if(!document.getElementById("obName").value.trim()) return "Введите имя";
-    if(!readNum("obAge") || readNum("obAge")<14) return "Введите корректный возраст";
-    if(!readNum("obHeight") || readNum("obHeight")<120) return "Введите корректный рост";
-    if(!readNum("obWeight") || readNum("obWeight")<30) return "Введите корректный вес";
+  if(step === 1){
+    const n = document.getElementById("obName");
+    if(!n || !n.value.trim()) return "Введите имя";
+    const age = readNum("obAge");
+    if(!age || age < 14) return "Введите корректный возраст";
+    const h = readNum("obHeight");
+    if(!h || h < 120) return "Введите корректный рост";
+    const w = readNum("obWeight");
+    if(!w || w < 30) return "Введите корректный вес";
   }
-  if(step===2 && onbGoals.length===0) return "Выберите хотя бы одну цель";
-  if(step===3 && !onbIntensity) return "Выберите интенсивность";
-  if(step===4){
-    if(!readNum("obTargetWeight")) return "Введите целевой вес";
-  }
+  if(step === 2 && onbGoals.length === 0) return "Выберите хотя бы одну цель";
+  if(step === 3 && !onbIntensity) return "Выберите интенсивность";
+  if(step === 4 && !readNum("obTargetWeight")) return "Введите целевой вес";
   return null;
 }
 
 function updatePlanPreview(){
+  const box = document.getElementById("planPreview");
+  if(!box) return;
   const cur = readNum("obWeight");
   const tgt = readNum("obTargetWeight");
-  const wks = parseInt(document.getElementById("obWeeks").value, 10);
-  const days = parseInt(document.getElementById("obDays").value, 10);
-  const box = document.getElementById("planPreview");
+  const wks = readInt("obWeeks");
+  const days = readInt("obDays");
   if(!cur || !tgt || !wks){
     box.textContent = "Заполните поля, чтобы увидеть расчёт.";
     return;
   }
   const diff = tgt - cur;
   const perWeek = diff / wks;
-  const dir = diff < 0 ? "снижение" : diff > 0 ? "набор" : "поддержание";
-  const safe = Math.abs(perWeek) <= 1 ? "✅ безопасный темп" : "⚠️ довольно быстрый темп, следите за самочувствием";
+  const dir = diff < 0 ? "снижение" : (diff > 0 ? "набор" : "поддержание");
+  const safe = Math.abs(perWeek) <= 1 ? "✅ безопасный темп" : "⚠️ быстрый темп";
   box.innerHTML =
-    `Цель: <b>${diff===0?"удержать вес":dir+" " + Math.abs(diff).toFixed(1) + " кг"}</b><br>` +
-    `За ${wks} недель это <b>${Math.abs(perWeek).toFixed(2)} кг/неделю</b> — ${safe}<br>` +
-    `Тренировок в неделю: <b>${days}</b> · Всего занятий: <b>${days*wks}</b>`;
+    "Цель: <b>" + (diff === 0 ? "удержать вес" : dir + " " + Math.abs(diff).toFixed(1) + " кг") + "</b><br>" +
+    "За " + wks + " недель это <b>" + Math.abs(perWeek).toFixed(2) + " кг/неделю</b> — " + safe + "<br>" +
+    "Тренировок в неделю: <b>" + days + "</b> · Всего занятий: <b>" + (days * wks) + "</b>";
 }
 
-["obWeeks","obDays","obTargetWeight","obWeight"].forEach(id=>{
+["obWeeks","obDays","obTargetWeight","obWeight"].forEach(function(id){
   const el = document.getElementById(id);
   if(el) el.addEventListener("input", updatePlanPreview);
 });
 
-document.getElementById("onbNext").onclick = ()=>{
-  const err = validateStep(onbStep);
-  if(err){ alert(err); return; }
+const onbNextEl = document.getElementById("onbNext");
+if(onbNextEl){
+  onbNextEl.onclick = function(){
+    const err = validateStep(onbStep);
+    if(err){ alert(err); return; }
 
-  if(onbStep < 5){ onbStep++; renderOnbStep(); return; }
+    if(onbStep < 5){ onbStep++; renderOnbStep(); return; }
 
-  // создаём профиль
-  profile = {
-    name: document.getElementById("obName").value.trim(),
-    gender: document.getElementById("obGender").value,
-    age: readNum("obAge"),
-    height: readNum("obHeight"),
-    weight: readNum("obWeight"),
-    startWeight: readNum("obWeight"),
-    goals: onbGoals.slice(),
-    intensity: onbIntensity,
-    targetWeight: readNum("obTargetWeight"),
-    weeks: parseInt(document.getElementById("obWeeks").value, 10),
-    days: parseInt(document.getElementById("obDays").value, 10),
-    startDate: new Date().toISOString()
+    profile = {
+      name: document.getElementById("obName").value.trim(),
+      gender: document.getElementById("obGender").value,
+      age: readNum("obAge"),
+      height: readNum("obHeight"),
+      weight: readNum("obWeight"),
+      startWeight: readNum("obWeight"),
+      goals: onbGoals.slice(),
+      intensity: onbIntensity,
+      targetWeight: readNum("obTargetWeight"),
+      weeks: readInt("obWeeks"),
+      days: readInt("obDays"),
+      startDate: new Date().toISOString()
+    };
+    const keyEl = document.getElementById("obApiKey");
+    apiKey = keyEl ? keyEl.value.trim() : "";
+    DB.set("apikey", apiKey);
+    DB.set("profile", profile);
+    stats = {workouts:[], weights:[{date:new Date().toISOString(), weight:profile.weight}]};
+    DB.set("stats", stats);
+
+    historyStack = [];
+    show("home");
+    renderHome();
   };
-  apiKey = document.getElementById("obApiKey").value.trim();
-  DB.set("apikey", apiKey);
-  DB.set("profile", profile);
-  stats = {workouts:[], weights:[{date:new Date().toISOString(), weight: profile.weight}]};
-  DB.set("stats", stats);
-  buildReminderDays();
-
-  historyStack = [];
-  show("home");
-  renderHome();
-};
+}
 
 /* ---------- ГЕНЕРАТОР ПРОГРАММЫ ---------- */
-function generatePlan(goals, intensity, seedOffset = 0){
+function generatePlan(goals, intensity, seedOffset){
+  if(!seedOffset) seedOffset = 0;
   const cfg = INTENSITY[intensity] || INTENSITY.medium;
   const pool = [];
-  goals.forEach(g=>{
-    (EXERCISES[g] || []).forEach(ex=>{
-      pool.push({...ex, group:g});
+
+  goals.forEach(function(g){
+    const list = EXERCISES[g] || [];
+    list.forEach(function(ex){
+      pool.push({
+        name: ex.name, emoji: ex.emoji, reps: ex.reps, timer: ex.timer,
+        met: ex.met, target: ex.target, desc: ex.desc, group: g
+      });
     });
   });
-  // убираем дубликаты по названию
-  const seen = new Set();
+
+  const seen = {};
   const unique = [];
-  pool.forEach(ex=>{
-    if(!seen.has(ex.name)){ seen.add(ex.name); unique.push(ex); }
+  pool.forEach(function(ex){
+    if(!seen[ex.name]){ seen[ex.name] = true; unique.push(ex); }
   });
 
-  const count = Math.min(Math.max(unique.length, 4), 6 + (cfg.sets >= 4 ? 1 : 0));
-  const rotate = seedOffset % Math.max(unique.length, 1);
+  if(unique.length === 0) return [];
+
+  const count = Math.min(unique.length, cfg.sets >= 4 ? 6 : 5);
+  const rotate = seedOffset % unique.length;
   const rotated = unique.slice(rotate).concat(unique.slice(0, rotate)).slice(0, count);
 
-  return rotated.map(ex=>({
-    ...ex,
-    sets: cfg.sets,
-    rest: cfg.rest,
-    reps: ex.reps ? Math.round(ex.reps * cfg.repMult) : null,
-    timer: ex.timer ? Math.round(ex.timer + (cfg.sets-3)*10) : null
-  }));
+  return rotated.map(function(ex){
+    return {
+      name: ex.name,
+      emoji: ex.emoji,
+      target: ex.target,
+      desc: ex.desc,
+      met: ex.met,
+      sets: cfg.sets,
+      rest: cfg.rest,
+      reps: ex.reps ? Math.round(ex.reps * cfg.repMult) : null,
+      timer: ex.timer ? ex.timer : null
+    };
+  });
 }
 
 function estimateSessionMinutes(plan){
   let total = 0;
-  plan.forEach(ex=>{
-    if(ex.timer){
-      total += (ex.timer + ex.rest) * ex.sets;
-    } else {
-      total += ((ex.reps * 3) + ex.rest) * ex.sets;
-    }
+  plan.forEach(function(ex){
+    const perSet = ex.timer ? (ex.timer + ex.rest) : ((ex.reps || 12) * 3 + ex.rest);
+    total += perSet * ex.sets;
   });
   return Math.max(5, Math.round(total / 60));
 }
 
 /* ---------- КАЛОРИИ ---------- */
 function calcCalories(plan, durationMin, weightKg){
+  if(!plan.length) return 0;
+  const perEx = durationMin / plan.length;
   let kcal = 0;
-  const perEx = durationMin / Math.max(plan.length, 1);
-  plan.forEach(ex=>{
+  plan.forEach(function(ex){
     kcal += (ex.met * 3.5 * weightKg / 200) * perEx;
   });
   return Math.round(kcal);
@@ -351,28 +406,38 @@ function calcCalories(plan, durationMin, weightKg){
 function renderHome(){
   if(!profile) return;
   const hour = new Date().getHours();
-  const dayPart = hour < 5 ? "Доброй ночи" : hour < 12 ? "Доброе утро" : hour < 18 ? "Добрый день" : "Добрый вечер";
-  document.getElementById("heroGreet").textContent = `${dayPart}, ${profile.name}!`;
+  const dayPart = hour < 5 ? "Доброй ночи" : (hour < 12 ? "Доброе утро" : (hour < 18 ? "Добрый день" : "Добрый вечер"));
+
+  const greet = document.getElementById("heroGreet");
+  if(greet) greet.textContent = dayPart + ", " + profile.name + "!";
 
   const plan = generatePlan(profile.goals, profile.intensity, stats.workouts.length);
   currentPlan = plan;
 
-  const goalsText = profile.goals.map(g=>GOAL_LABELS[g]).join(" + ");
-  document.getElementById("heroProgram").textContent = goalsText + " workout";
-  document.getElementById("heroMeta").textContent = `${plan.length} упражнений · ${INTENSITY[profile.intensity].label}`;
-  document.getElementById("heroDuration").textContent = estimateSessionMinutes(plan);
+  const goalsText = profile.goals.map(function(g){ return GOAL_LABELS[g] || g; }).join(" + ");
+  const hp = document.getElementById("heroProgram");
+  if(hp) hp.textContent = goalsText + " workout";
+  const hm = document.getElementById("heroMeta");
+  if(hm) hm.textContent = plan.length + " упражнений · " + INTENSITY[profile.intensity].label;
+  const hd = document.getElementById("heroDuration");
+  if(hd) hd.textContent = estimateSessionMinutes(plan);
 
-  // статистика
-  const totalKcal = stats.workouts.reduce((s,w)=>s+w.kcal, 0);
-  document.getElementById("statTotalKcal").textContent = totalKcal;
-  document.getElementById("statWorkouts").textContent = stats.workouts.length;
+  let totalKcal = 0;
+  stats.workouts.forEach(function(w){ totalKcal += w.kcal; });
+  const sk = document.getElementById("statTotalKcal");
+  if(sk) sk.textContent = totalKcal;
+  const sw = document.getElementById("statWorkouts");
+  if(sw) sw.textContent = stats.workouts.length;
 
-  const firstWeight = profile.startWeight || profile.weight;
-  document.getElementById("statWeight").textContent = profile.weight + " кг";
-  const toGoal = (profile.targetWeight - profile.weight);
-  const el = document.getElementById("statToGoal");
-  el.textContent = Math.abs(toGoal).toFixed(1) + " кг";
-  el.classList.add("small-v");
+  const sbw = document.getElementById("statWeight");
+  if(sbw) sbw.textContent = profile.weight + " кг";
+
+  const stg = document.getElementById("statToGoal");
+  if(stg){
+    const toGoal = profile.targetWeight - profile.weight;
+    stg.textContent = Math.abs(toGoal).toFixed(1) + " кг";
+    stg.classList.add("small-v");
+  }
 
   renderWorkoutList();
   renderWeeklyReport("weeklyReport");
@@ -380,19 +445,24 @@ function renderHome(){
 
 function renderWorkoutList(){
   const wrap = document.getElementById("workoutList");
+  if(!wrap || !profile) return;
   wrap.innerHTML = "";
-  profile.goals.forEach(g=>{
+
+  profile.goals.forEach(function(g){
     const cnt = (EXERCISES[g] || []).length;
     const item = document.createElement("div");
     item.className = "workout-item";
-    item.innerHTML = `
-      <div class="wi-icon">${GOAL_ICONS[g]}</div>
-      <div class="wi-body">
-        <div class="wi-title">${GOAL_LABELS[g]}</div>
-        <div class="wi-sub">${cnt} упражнений · ${INTENSITY[profile.intensity].sets} подхода</div>
-      </div>
-      <div class="wi-badge">${estimateSessionMinutes(generatePlan([g], profile.intensity))} мин</div>`;
-    item.onclick = ()=> startWorkout(generatePlan([g], profile.intensity), GOAL_LABELS[g] + " workout");
+    item.innerHTML =
+      '<div class="wi-icon">' + (GOAL_ICONS[g] || "🏋️") + '</div>' +
+      '<div class="wi-body">' +
+        '<div class="wi-title">' + (GOAL_LABELS[g] || g) + '</div>' +
+        '<div class="wi-sub">' + cnt + ' упражнений · ' + INTENSITY[profile.intensity].sets + ' подхода</div>' +
+      '</div>' +
+      '<div class="wi-badge">' + estimateSessionMinutes(generatePlan([g], profile.intensity)) + ' мин</div>';
+
+    item.onclick = function(){
+      startWorkout(generatePlan([g], profile.intensity), (GOAL_LABELS[g] || g) + " workout");
+    };
     wrap.appendChild(item);
   });
 }
@@ -400,93 +470,117 @@ function renderWorkoutList(){
 function startSelectedOrFirst(){
   if(!profile){ show("onboarding"); return; }
   const plan = generatePlan(profile.goals, profile.intensity, stats.workouts.length);
-  startWorkout(plan, profile.goals.map(g=>GOAL_LABELS[g]).join(" + ") + " workout");
+  const title = profile.goals.map(function(g){ return GOAL_LABELS[g] || g; }).join(" + ") + " workout";
+  startWorkout(plan, title);
 }
 
-document.getElementById("startTodayBtn").onclick = startSelectedOrFirst;
+const startTodayEl = document.getElementById("startTodayBtn");
+if(startTodayEl) startTodayEl.onclick = startSelectedOrFirst;
 
 /* ---------- ТРЕНИРОВКА ---------- */
 let timerInterval = null;
-let timerSeconds = 0;
-let timerRunning = false;
-let timerPhase = "Работа";
-let currentSet = 1;
+let timerSeconds  = 0;
+let timerRunning  = false;
+let timerPhase    = "Работа";
+let currentSet    = 1;
 
 function startWorkout(plan, title){
-  if(!plan || plan.length===0){ alert("Нет упражнений"); return; }
+  if(!plan || plan.length === 0){ alert("Нет упражнений"); return; }
   currentPlan = plan;
   currentIndex = 0;
   currentSet = 1;
   session = {
-    title,
+    title: title,
     startedAt: Date.now(),
-    plan: plan.map(p=>({name:p.name, target:p.target, met:p.met})),
+    plan: plan.map(function(p){ return {name:p.name, target:p.target, met:p.met}; }),
     kcal: 0,
     duration: 0
   };
-  document.getElementById("wTitle").textContent = title;
+  const wt = document.getElementById("wTitle");
+  if(wt) wt.textContent = title;
   show("workout");
   renderExercise();
 }
 
 function renderExercise(){
   const ex = currentPlan[currentIndex];
-  document.getElementById("wEmoji").textContent = ex.emoji;
-  document.getElementById("wName").textContent = ex.name;
-  document.getElementById("wTarget").textContent = "Цель: " + ex.target;
-  document.getElementById("wDesc").textContent = ex.desc;
+  if(!ex) return;
 
-  document.getElementById("wCounter").textContent = `${currentIndex+1} / ${currentPlan.length}`;
-  document.getElementById("wProgress").style.width =
-    ((currentIndex) / currentPlan.length * 100) + "%";
+  const e1 = document.getElementById("wEmoji");   if(e1) e1.textContent = ex.emoji;
+  const e2 = document.getElementById("wName");    if(e2) e2.textContent = ex.name;
+  const e3 = document.getElementById("wTarget");  if(e3) e3.textContent = "Цель: " + ex.target;
+  const e4 = document.getElementById("wDesc");    if(e4) e4.textContent = ex.desc;
+  const e5 = document.getElementById("wCounter"); if(e5) e5.textContent = (currentIndex + 1) + " / " + currentPlan.length;
 
-  document.getElementById("setTotal").textContent = ex.sets;
+  const pr = document.getElementById("wProgress");
+  if(pr) pr.style.width = (currentIndex / currentPlan.length * 100) + "%";
+
+  const st = document.getElementById("setTotal");
+  if(st) st.textContent = ex.sets;
   currentSet = 1;
-  document.getElementById("setNow").textContent = currentSet;
-  document.getElementById("repCount").textContent = ex.reps || "—";
+  const sn = document.getElementById("setNow");
+  if(sn) sn.textContent = currentSet;
+  const rc = document.getElementById("repCount");
+  if(rc) rc.textContent = ex.reps ? ex.reps : "—";
 
   stopTimer();
-  timerSeconds = ex.timer || 40;
+  timerSeconds = ex.timer ? ex.timer : 40;
+  timerPhase = "Работа";
   updateTimerDisplay();
 
-  document.getElementById("prevEx").disabled = currentIndex === 0;
-  document.getElementById("nextEx").textContent =
-    currentIndex === currentPlan.length-1 ? "Завершить" : "След. →";
+  const pe = document.getElementById("prevEx");
+  if(pe) pe.disabled = (currentIndex === 0);
+  const ne = document.getElementById("nextEx");
+  if(ne) ne.textContent = (currentIndex === currentPlan.length - 1) ? "Завершить" : "След. →";
 }
 
-document.querySelectorAll(".tm-btn").forEach(btn=>{
-  btn.onclick = ()=>{
-    document.querySelectorAll(".tm-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    const mode = btn.dataset.mode;
-    document.getElementById("modeReps").classList.toggle("hidden", mode!=="reps");
-    document.getElementById("modeTimer").classList.toggle("hidden", mode!=="timer");
+const tmBtns = document.querySelectorAll(".tm-btn");
+for(let i = 0; i < tmBtns.length; i++){
+  tmBtns[i].onclick = function(){
+    for(let j = 0; j < tmBtns.length; j++) tmBtns[j].classList.remove("active");
+    tmBtns[i].classList.add("active");
+    const mode = tmBtns[i].dataset.mode;
+    const mr = document.getElementById("modeReps");
+    const mt = document.getElementById("modeTimer");
+    if(mr) mr.classList.toggle("hidden", mode !== "reps");
+    if(mt) mt.classList.toggle("hidden", mode !== "timer");
     stopTimer();
   };
-});
+}
 
-document.getElementById("doneSetBtn").onclick = ()=>{
-  const ex = currentPlan[currentIndex];
-  currentSet++;
-  if(currentSet > ex.sets){
-    nextExercise();
-  } else {
-    document.getElementById("setNow").textContent = currentSet;
-    beep(600, 100);
-  }
-};
+const doneSetEl = document.getElementById("doneSetBtn");
+if(doneSetEl){
+  doneSetEl.onclick = function(){
+    const ex = currentPlan[currentIndex];
+    if(!ex) return;
+    currentSet++;
+    if(currentSet > ex.sets){
+      nextExercise();
+    } else {
+      const sn = document.getElementById("setNow");
+      if(sn) sn.textContent = currentSet;
+      beep(600, 100);
+    }
+  };
+}
 
-document.getElementById("nextEx").onclick = ()=>{
-  if(currentIndex === currentPlan.length-1){ finishWorkout(); }
-  else { nextExercise(true); }
-};
+const nextExEl = document.getElementById("nextEx");
+if(nextExEl){
+  nextExEl.onclick = function(){
+    if(currentIndex === currentPlan.length - 1) finishWorkout();
+    else nextExercise();
+  };
+}
 
-document.getElementById("prevEx").onclick = ()=>{
-  if(currentIndex > 0){ currentIndex--; renderExercise(); }
-};
+const prevExEl = document.getElementById("prevEx");
+if(prevExEl){
+  prevExEl.onclick = function(){
+    if(currentIndex > 0){ currentIndex--; renderExercise(); }
+  };
+}
 
-function nextExercise(skip = false){
-  if(currentIndex < currentPlan.length-1){
+function nextExercise(){
+  if(currentIndex < currentPlan.length - 1){
     currentIndex++;
     renderExercise();
     beep(880, 150);
@@ -497,49 +591,65 @@ function nextExercise(skip = false){
 
 /* ---------- ТАЙМЕР ---------- */
 function fmt(sec){
-  const m = Math.floor(sec/60);
+  const m = Math.floor(sec / 60);
   const s = sec % 60;
-  return String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+  return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
 }
 
 function updateTimerDisplay(){
   const ex = currentPlan[currentIndex];
-  const total = ex.timer || 40;
-  document.getElementById("ctText").textContent = fmt(timerSeconds);
+  if(!ex) return;
+  const total = ex.timer ? ex.timer : 40;
+  const ct = document.getElementById("ctText");
+  if(ct) ct.textContent = fmt(timerSeconds);
   const circle = document.getElementById("ctFg");
-  const len = 553;
-  const progress = Math.max(0, timerSeconds / total);
-  circle.style.strokeDashoffset = String(len * (1 - progress));
-  document.getElementById("timerPhase").textContent = timerPhase;
+  if(circle){
+    const len = 553;
+    const progress = Math.max(0, Math.min(1, timerSeconds / total));
+    circle.style.strokeDashoffset = String(len * (1 - progress));
+  }
+  const tp = document.getElementById("timerPhase");
+  if(tp) tp.textContent = timerPhase;
 }
 
-document.getElementById("timerToggle").onclick = ()=>{
-  if(timerRunning) stopTimer();
-  else startTimer();
-};
+const timerToggleEl = document.getElementById("timerToggle");
+if(timerToggleEl){
+  timerToggleEl.onclick = function(){
+    if(timerRunning) stopTimer();
+    else startTimer();
+  };
+}
 
-document.getElementById("timerReset").onclick = ()=>{
-  stopTimer();
-  const ex = currentPlan[currentIndex];
-  timerSeconds = ex.timer || 40;
-  timerPhase = "Работа";
-  updateTimerDisplay();
-};
+const timerResetEl = document.getElementById("timerReset");
+if(timerResetEl){
+  timerResetEl.onclick = function(){
+    stopTimer();
+    const ex = currentPlan[currentIndex];
+    timerSeconds = ex && ex.timer ? ex.timer : 40;
+    timerPhase = "Работа";
+    updateTimerDisplay();
+  };
+}
 
 function startTimer(){
   if(timerRunning) return;
   timerRunning = true;
-  document.getElementById("timerToggle").textContent = "⏸ Пауза";
-  timerInterval = setInterval(()=>{
+  const tb = document.getElementById("timerToggle");
+  if(tb) tb.textContent = "⏸ Пауза";
+
+  timerInterval = setInterval(function(){
     timerSeconds--;
+
     if(timerSeconds <= 0){
+      const ex = currentPlan[currentIndex];
+      if(!ex){ stopTimer(); return; }
+
       if(timerPhase === "Работа"){
-        // закончилась работа → подход выполнен → отдых
-        const ex = currentPlan[currentIndex];
         currentSet++;
         if(currentSet > ex.sets){
           stopTimer();
-          document.getElementById("setNow").textContent = ex.sets;
+          const sn = document.getElementById("setNow");
+          if(sn) sn.textContent = ex.sets;
           nextExercise();
           return;
         }
@@ -549,8 +659,9 @@ function startTimer(){
         notify("Отдых " + ex.rest + " сек", "Следующий подход: " + ex.name);
       } else {
         timerPhase = "Работа";
-        timerSeconds = currentPlan[currentIndex].timer || 40;
-        document.getElementById("setNow").textContent = currentSet;
+        timerSeconds = ex.timer ? ex.timer : 40;
+        const sn = document.getElementById("setNow");
+        if(sn) sn.textContent = currentSet;
         beep(600, 300);
       }
     }
@@ -561,294 +672,314 @@ function startTimer(){
 function stopTimer(){
   if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
   timerRunning = false;
-  const btn = document.getElementById("timerToggle");
-  if(btn) btn.textContent = "▶ Старт";
+  const tb = document.getElementById("timerToggle");
+  if(tb) tb.textContent = "▶ Старт";
 }
 
-/* ---------- ЗВУК И ВИБРАЦИЯ ---------- */
+/* ---------- ЗВУК ---------- */
 let audioCtx = null;
 function beep(freq, ms){
   try{
     if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
-    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
     osc.frequency.value = freq;
     osc.type = "sine";
     gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + ms/1000);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + ms / 1000);
     osc.start();
-    osc.stop(audioCtx.currentTime + ms/1000);
+    osc.stop(audioCtx.currentTime + ms / 1000);
   }catch(e){}
   if(navigator.vibrate) navigator.vibrate(ms);
 }
 
-/* ---------- ЗАВЕРШЕНИЕ ТРЕНИРОВКИ ---------- */
-document.getElementById("finishEarly").onclick = ()=>{
-  if(confirm("Завершить тренировку?")) finishWorkout();
-};
+/* ---------- ЗАВЕРШЕНИЕ ---------- */
+const finishEarlyEl = document.getElementById("finishEarly");
+if(finishEarlyEl){
+  finishEarlyEl.onclick = function(){
+    if(confirm("Завершить тренировку?")) finishWorkout();
+  };
+}
 
 function finishWorkout(){
   stopTimer();
   if(!session) return;
+
   const durationMin = Math.max(1, Math.round((Date.now() - session.startedAt) / 60000));
   const kcal = calcCalories(currentPlan, durationMin, profile.weight);
 
   session.duration = durationMin;
   session.kcal = kcal;
 
-  document.getElementById("rExerciseCount").textContent = currentPlan.length + " упражнений";
-  document.getElementById("rKcal").textContent = kcal;
-  document.getElementById("rDuration").textContent = durationMin;
-  document.getElementById("rWeight").value = profile.weight;
+  const ec = document.getElementById("rExerciseCount");
+  if(ec) ec.textContent = currentPlan.length + " упражнений";
+  const rk = document.getElementById("rKcal");
+  if(rk) rk.textContent = kcal;
+  const rd = document.getElementById("rDuration");
+  if(rd) rd.textContent = durationMin;
+  const rw = document.getElementById("rWeight");
+  if(rw) rw.value = profile.weight;
 
   historyStack = ["home"];
   show("result");
 }
 
-document.getElementById("saveResultBtn").onclick = ()=>{
-  const w = readNum("rWeight");
-  if(w && w > 20){
-    profile.weight = w;
-    DB.set("profile", profile);
-    stats.weights.push({date:new Date().toISOString(), weight:w});
-  }
+const saveResultEl = document.getElementById("saveResultBtn");
+if(saveResultEl){
+  saveResultEl.onclick = function(){
+    if(!session) return;
 
-  stats.workouts.push({
-    date: new Date().toISOString(),
-    title: session.title,
-    duration: session.duration,
-    kcal: session.kcal,
-    exercises: session.plan
-  });
-  DB.set("stats", stats);
-  session = null;
+    const w = readNum("rWeight");
+    if(w && w > 20){
+      profile.weight = w;
+      DB.set("profile", profile);
+      stats.weights.push({date: new Date().toISOString(), weight: w});
+    }
 
-  historyStack = [];
-  show("home");
-  renderHome();
-  notify("Тренировка сохранена 💪", `Сожжено ${stats.workouts[stats.workouts.length-1].kcal} ккал`);
-};
+    stats.workouts.push({
+      date: new Date().toISOString(),
+      title: session.title,
+      duration: session.duration,
+      kcal: session.kcal,
+      exercises: session.plan
+    });
+    DB.set("stats", stats);
 
-document.getElementById("goHomeBtn").onclick = ()=>{
-  session = null;
-  historyStack = [];
-  show("home");
-  renderHome();
-};
+    const savedKcal = session.kcal;
+    session = null;
 
-/* ---------- ПРОГРЕСС И ОТЧЁТЫ ---------- */
-function weekKey(d){
-  const date = new Date(d);
-  const onejan = new Date(date.getFullYear(), 0, 1);
-  const week = Math.ceil((((date - onejan) / 86400000) + onejan.getDay() + 1) / 7);
-  return date.getFullYear() + "-W" + week;
+    historyStack = [];
+    show("home");
+    renderHome();
+    notify("Тренировка сохранена 💪", "Сожжено " + savedKcal + " ккал");
+  };
 }
 
-function groupByWeek(workouts){
-  const map = {};
-  workouts.forEach(w=>{
-    const k = weekKey(w.date);
-    if(!map[k]) map[k] = {kcal:0, count:0, minutes:0};
-    map[k].kcal += w.kcal;
-    map[k].count++;
-    map[k].minutes += w.duration;
-  });
-  return map;
+const goHomeEl = document.getElementById("goHomeBtn");
+if(goHomeEl){
+  goHomeEl.onclick = function(){
+    session = null;
+    historyStack = [];
+    show("home");
+    renderHome();
+  };
 }
 
+/* ---------- ОТЧЁТЫ ---------- */
 function renderWeeklyReport(targetId){
   const el = document.getElementById(targetId);
   if(!el) return;
 
-  const now = new Date();
-  const weekAgo = now.getTime() - 7*24*3600*1000;
-  const thisWeek = stats.workouts.filter(w=> new Date(w.date).getTime() >= weekAgo);
-  const kcal = thisWeek.reduce((s,w)=>s+w.kcal, 0);
-  const mins = thisWeek.reduce((s,w)=>s+w.duration, 0);
+  const weekAgo = Date.now() - 7 * 24 * 3600 * 1000;
+  const thisWeek = stats.workouts.filter(function(w){
+    return new Date(w.date).getTime() >= weekAgo;
+  });
 
-  // изменения веса за неделю
-  const ws = stats.weights.slice().sort((a,b)=> new Date(a.date) - new Date(b.date));
-  const weekWeights = ws.filter(w=> new Date(w.date).getTime() >= weekAgo);
+  let kcal = 0, mins = 0;
+  thisWeek.forEach(function(w){ kcal += w.kcal; mins += w.duration; });
+
+  const ws = stats.weights.slice().sort(function(a,b){ return new Date(a.date) - new Date(b.date); });
+  const weekWeights = ws.filter(function(w){ return new Date(w.date).getTime() >= weekAgo; });
+
   let deltaTxt = "нет данных";
   if(weekWeights.length >= 2){
-    const d = weekWeights[weekWeights.length-1].weight - weekWeights[0].weight;
-    deltaTxt = (d>0?"+":"") + d.toFixed(1) + " кг";
+    const d = weekWeights[weekWeights.length - 1].weight - weekWeights[0].weight;
+    deltaTxt = (d > 0 ? "+" : "") + d.toFixed(1) + " кг";
   } else if(ws.length >= 1 && profile){
     const d = profile.weight - ws[0].weight;
-    deltaTxt = (d>0?"+":"") + d.toFixed(1) + " кг";
+    deltaTxt = (d > 0 ? "+" : "") + d.toFixed(1) + " кг";
   }
 
-  const target = profile ? profile.targetWeight : null;
-  const toGoal = profile ? (profile.weight - target).toFixed(1) : "—";
+  const toGoal = profile ? (profile.weight - profile.targetWeight).toFixed(1) : "—";
 
-  el.innerHTML = `
-    <div class="report-big">${kcal} ккал</div>
-    <div class="report-cap">сожжено за последние 7 дней</div>
-    <div class="list-row"><span>Тренировок за неделю</span><span class="lr-val">${thisWeek.length}</span></div>
-    <div class="list-row"><span>Общее время</span><span class="lr-val">${mins} мин</span></div>
-    <div class="list-row"><span>Изменение веса</span><span class="lr-val">${deltaTxt}</span></div>
-    <div class="list-row"><span>До цели осталось</span><span class="lr-val">${Math.abs(toGoal)} кг</span></div>
-    <div class="list-row"><span>Цель на неделю</span><span class="lr-val">${profile ? profile.days : "—"} тренировки</span></div>
-  `;
+  el.innerHTML =
+    '<div class="report-big">' + kcal + ' ккал</div>' +
+    '<div class="report-cap">сожжено за последние 7 дней</div>' +
+    '<div class="list-row"><span>Тренировок за неделю</span><span class="lr-val">' + thisWeek.length + '</span></div>' +
+    '<div class="list-row"><span>Общее время</span><span class="lr-val">' + mins + ' мин</span></div>' +
+    '<div class="list-row"><span>Изменение веса</span><span class="lr-val">' + deltaTxt + '</span></div>' +
+    '<div class="list-row"><span>До цели осталось</span><span class="lr-val">' + Math.abs(toGoal) + ' кг</span></div>' +
+    '<div class="list-row"><span>Цель на неделю</span><span class="lr-val">' + (profile ? profile.days + " тренировки" : "—") + '</span></div>';
 }
 
 function renderProgress(){
   renderWeeklyReport("progressReport");
 
-  // история тренировок
   const hl = document.getElementById("historyList");
-  hl.innerHTML = "";
-  const recent = stats.workouts.slice().reverse().slice(0,15);
-  if(recent.length === 0){
-    hl.innerHTML = '<p class="muted center">Пока нет тренировок</p>';
+  if(hl){
+    hl.innerHTML = "";
+    const recent = stats.workouts.slice().reverse().slice(0, 15);
+    if(recent.length === 0){
+      hl.innerHTML = '<p class="muted center">Пока нет тренировок</p>';
+    }
+    recent.forEach(function(w){
+      const d = new Date(w.date);
+      const dateStr = d.toLocaleDateString("ru-RU", {day:"2-digit", month:"short"}) + " " +
+                      d.toLocaleTimeString("ru-RU", {hour:"2-digit", minute:"2-digit"});
+      const row = document.createElement("div");
+      row.className = "list-row";
+      row.innerHTML =
+        '<div><div>' + w.title + '</div>' +
+        '<div class="lr-sub">' + dateStr + ' · ' + w.duration + ' мин</div></div>' +
+        '<div class="lr-val">' + w.kcal + ' ккал</div>';
+      hl.appendChild(row);
+    });
   }
-  recent.forEach(w=>{
-    const d = new Date(w.date);
-    const dateStr = d.toLocaleDateString("ru-RU", {day:"2-digit", month:"short"}) + " " +
-                    d.toLocaleTimeString("ru-RU", {hour:"2-digit", minute:"2-digit"});
-    const row = document.createElement("div");
-    row.className = "list-row";
-    row.innerHTML = `
-      <div>
-        <div>${w.title}</div>
-        <div class="lr-sub">${dateStr} · ${w.duration} мин</div>
-      </div>
-      <div class="lr-val">${w.kcal} ккал</div>`;
-    hl.appendChild(row);
-  });
 
-  // дневник веса
   const wl = document.getElementById("weightList");
-  wl.innerHTML = "";
-  const ws = stats.weights.slice().reverse().slice(0,15);
-  if(ws.length === 0){
-    wl.innerHTML = '<p class="muted center">Пока нет записей</p>';
+  if(wl){
+    wl.innerHTML = "";
+    const ws = stats.weights.slice().reverse().slice(0, 15);
+    if(ws.length === 0){
+      wl.innerHTML = '<p class="muted center">Пока нет записей</p>';
+    }
+    ws.forEach(function(w){
+      const d = new Date(w.date);
+      const row = document.createElement("div");
+      row.className = "list-row";
+      row.innerHTML =
+        '<div>' + d.toLocaleDateString("ru-RU", {day:"2-digit", month:"long", year:"numeric"}) + '</div>' +
+        '<div class="lr-val">' + w.weight + ' кг</div>';
+      wl.appendChild(row);
+    });
   }
-  ws.forEach(w=>{
-    const d = new Date(w.date);
-    const row = document.createElement("div");
-    row.className = "list-row";
-    row.innerHTML = `
-      <div>${d.toLocaleDateString("ru-RU", {day:"2-digit", month:"long", year:"numeric"})}</div>
-      <div class="lr-val">${w.weight} кг</div>`;
-    wl.appendChild(row);
-  });
 }
 
 /* ---------- НАСТРОЙКИ ---------- */
 function renderSettings(){
   if(!profile) return;
-  document.getElementById("stName").value = profile.name;
-  document.getElementById("stAge").value = profile.age;
-  document.getElementById("stHeight").value = profile.height;
-  document.getElementById("stGender").value = profile.gender;
-  document.getElementById("stIntensity").value = profile.intensity;
-  document.getElementById("stTargetWeight").value = profile.targetWeight;
-  document.getElementById("stWeeks").value = profile.weeks;
-  document.getElementById("stApiKey").value = apiKey;
-  document.getElementById("stReminderTime").value = reminder.time;
+
+  const set = function(id, val){
+    const el = document.getElementById(id);
+    if(el) el.value = val;
+  };
+
+  set("stName", profile.name);
+  set("stAge", profile.age);
+  set("stHeight", profile.height);
+  set("stGender", profile.gender);
+  set("stIntensity", profile.intensity);
+  set("stTargetWeight", profile.targetWeight);
+  set("stWeeks", profile.weeks);
+  set("stApiKey", apiKey);
+  set("stReminderTime", reminder.time);
 
   const gWrap = document.getElementById("settingsGoals");
-  gWrap.innerHTML = "";
-  Object.keys(GOAL_LABELS).forEach(g=>{
-    const b = document.createElement("button");
-    b.className = "chip" + (profile.goals.includes(g) ? " selected" : "");
-    b.textContent = GOAL_ICONS[g] + " " + GOAL_LABELS[g];
-    b.onclick = ()=>{
-      if(profile.goals.includes(g)){
-        if(profile.goals.length === 1) return;
-        profile.goals = profile.goals.filter(x=>x!==g);
-        b.classList.remove("selected");
-      } else {
-        profile.goals.push(g);
-        b.classList.add("selected");
-      }
-    };
-    gWrap.appendChild(b);
-  });
+  if(gWrap){
+    gWrap.innerHTML = "";
+    Object.keys(GOAL_LABELS).forEach(function(g){
+      const b = document.createElement("button");
+      b.className = "chip" + (profile.goals.indexOf(g) !== -1 ? " selected" : "");
+      b.textContent = GOAL_ICONS[g] + " " + GOAL_LABELS[g];
+      b.onclick = function(){
+        if(profile.goals.indexOf(g) !== -1){
+          if(profile.goals.length === 1) return;
+          profile.goals = profile.goals.filter(function(x){ return x !== g; });
+          b.classList.remove("selected");
+        } else {
+          profile.goals.push(g);
+          b.classList.add("selected");
+        }
+      };
+      gWrap.appendChild(b);
+    });
+  }
 
-  document.querySelectorAll("#reminderDays .chip").forEach(c=>{
-    c.classList.toggle("selected", reminder.days.includes(Number(c.dataset.day)));
-  });
+  const dayChips = document.querySelectorAll("#reminderDays .chip");
+  for(let i = 0; i < dayChips.length; i++){
+    dayChips[i].classList.toggle("selected", reminder.days.indexOf(Number(dayChips[i].dataset.day)) !== -1);
+  }
 
   updateNotifStatus();
 }
 
-document.getElementById("saveSettings").onclick = ()=>{
-  profile.name = document.getElementById("stName").value.trim() || profile.name;
-  profile.age = readNum("stAge") || profile.age;
-  profile.height = readNum("stHeight") || profile.height;
-  profile.gender = document.getElementById("stGender").value;
-  profile.intensity = document.getElementById("stIntensity").value;
-  profile.targetWeight = readNum("stTargetWeight") || profile.targetWeight;
-  profile.weeks = readNum("stWeeks") || profile.weeks;
-  DB.set("profile", profile);
-  apiKey = document.getElementById("stApiKey").value.trim();
-  DB.set("apikey", apiKey);
-  reminder.time = document.getElementById("stReminderTime").value;
-  DB.set("reminder", reminder);
-  alert("Сохранено ✅");
-  renderHome();
-};
+const saveSettingsEl = document.getElementById("saveSettings");
+if(saveSettingsEl){
+  saveSettingsEl.onclick = function(){
+    profile.name = (document.getElementById("stName").value.trim() || profile.name);
+    profile.age = readNum("stAge") || profile.age;
+    profile.height = readNum("stHeight") || profile.height;
+    profile.gender = document.getElementById("stGender").value;
+    profile.intensity = document.getElementById("stIntensity").value;
+    profile.targetWeight = readNum("stTargetWeight") || profile.targetWeight;
+    profile.weeks = readNum("stWeeks") || profile.weeks;
+    DB.set("profile", profile);
 
-document.querySelectorAll("#reminderDays .chip").forEach(c=>{
-  c.onclick = ()=>{
-    const d = Number(c.dataset.day);
-    if(reminder.days.includes(d)) reminder.days = reminder.days.filter(x=>x!==d);
+    apiKey = document.getElementById("stApiKey").value.trim();
+    DB.set("apikey", apiKey);
+
+    reminder.time = document.getElementById("stReminderTime").value;
+    DB.set("reminder", reminder);
+
+    alert("Сохранено ✅");
+    renderHome();
+  };
+}
+
+const dayChipEls = document.querySelectorAll("#reminderDays .chip");
+for(let i = 0; i < dayChipEls.length; i++){
+  dayChipEls[i].onclick = function(){
+    const d = Number(dayChipEls[i].dataset.day);
+    if(reminder.days.indexOf(d) !== -1) reminder.days = reminder.days.filter(function(x){ return x !== d; });
     else reminder.days.push(d);
-    c.classList.toggle("selected");
+    dayChipEls[i].classList.toggle("selected");
     DB.set("reminder", reminder);
   };
-});
+}
 
-document.getElementById("stReminderTime").onchange = (e)=>{
-  reminder.time = e.target.value;
-  DB.set("reminder", reminder);
-};
+const stTimeEl = document.getElementById("stReminderTime");
+if(stTimeEl){
+  stTimeEl.onchange = function(e){
+    reminder.time = e.target.value;
+    DB.set("reminder", reminder);
+  };
+}
 
-document.getElementById("resetApp").onclick = ()=>{
-  if(!confirm("Удалить все данные? Это необратимо.")) return;
-  ["profile","stats","reminder","apikey"].forEach(k=>DB.del(k));
-  location.reload();
-};
+const resetAppEl = document.getElementById("resetApp");
+if(resetAppEl){
+  resetAppEl.onclick = function(){
+    if(!confirm("Удалить все данные? Это необратимо.")) return;
+    DB.del("profile"); DB.del("stats"); DB.del("reminder"); DB.del("apikey");
+    location.reload();
+  };
+}
 
 /* ---------- УВЕДОМЛЕНИЯ ---------- */
 function updateNotifStatus(){
   const el = document.getElementById("notifStatus");
+  if(!el) return;
   if(!("Notification" in window)){ el.textContent = "Браузер не поддерживает уведомления"; return; }
   const p = Notification.permission;
   el.textContent = p === "granted" ? "✅ Уведомления включены" :
-                   p === "denied" ? "❌ Уведомления запрещены в настройках браузера" :
-                   "Уведомления выключены";
+                   p === "denied"  ? "❌ Уведомления запрещены в настройках браузера" :
+                                     "Уведомления выключены";
 }
 
-document.getElementById("enableNotif").onclick = async ()=>{
-  if(!("Notification" in window)){ alert("Браузер не поддерживает уведомления"); return; }
-  const p = await Notification.requestPermission();
-  if(p === "granted"){
-    reminder.enabled = true;
-    DB.set("reminder", reminder);
-    notify("Уведомления включены 🔔", "Напомним о тренировке в " + reminder.time);
-    scheduleReminder();
-  }
-  updateNotifStatus();
-};
+const enableNotifEl = document.getElementById("enableNotif");
+if(enableNotifEl){
+  enableNotifEl.onclick = function(){
+    if(!("Notification" in window)){ alert("Браузер не поддерживает уведомления"); return; }
+    Notification.requestPermission().then(function(p){
+      if(p === "granted"){
+        reminder.enabled = true;
+        DB.set("reminder", reminder);
+        notify("Уведомления включены 🔔", "Напомним о тренировке в " + reminder.time);
+        scheduleReminder();
+      }
+      updateNotifStatus();
+    });
+  };
+}
 
 function notify(title, body){
   try{
     if(!("Notification" in window) || Notification.permission !== "granted") return;
     if(navigator.serviceWorker && navigator.serviceWorker.controller){
-      navigator.serviceWorker.ready.then(reg=>{
-function notify(title, body){
-  try{
-    if(!("Notification" in window) || Notification.permission !== "granted") return;
-    if(navigator.serviceWorker && navigator.serviceWorker.controller){
-      navigator.serviceWorker.ready.then(reg=>{
+      navigator.serviceWorker.ready.then(function(reg){
         reg.showNotification(title, {
           body: body,
-          icon: "icon-192.png",
-          badge: "icon-192.png",
           vibrate: [200,100,200],
           tag: "fitapp"
         });
@@ -861,33 +992,38 @@ function notify(title, body){
 
 let reminderTimer = null;
 function scheduleReminder(){
-  if(reminderTimer) clearTimeout(reminderTimer);
+  if(reminderTimer){ clearTimeout(reminderTimer); reminderTimer = null; }
   if(!reminder.enabled) return;
 
+  const parts = reminder.time.split(":");
+  const h = parseInt(parts[0], 10);
+  const m = parseInt(parts[1], 10);
+
   const now = new Date();
-  const [h, m] = reminder.time.split(":").map(Number);
   const target = new Date();
   target.setHours(h, m, 0, 0);
   if(target <= now) target.setDate(target.getDate() + 1);
 
   const ms = target - now;
-  reminderTimer = setTimeout(()=>{
-    if(reminder.days.includes(new Date().getDay()) || reminder.days.includes(0)){
+  reminderTimer = setTimeout(function(){
+    if(reminder.days.indexOf(new Date().getDay()) !== -1){
       notify("Пора тренироваться! 💪", "Сегодня по плану занятие. Откройте приложение.");
     }
     scheduleReminder();
   }, ms);
 }
 
-/* ---------- ИИ-АССИСТЕНТ (GEMINI) ---------- */
-const SYSTEM_PROMPT = `Ты — фитнес-ассистент в приложении для тренировок.
-Отвечай кратко, дружелюбно, на русском языке.
-Пользователь занимается без специального оборудования (домашние тренировки).
-Если вопрос про здоровье или боль — советуй обратиться к врачу.
-Не назначай медицинские препараты и диеты для похудения.`;
+/* ---------- ИИ-АССИСТЕНТ ---------- */
+const SYSTEM_PROMPT =
+  "Ты — фитнес-ассистент в приложении для домашних тренировок. " +
+  "Отвечай кратко, дружелюбно, на русском языке. " +
+  "Пользователь занимается без специального оборудования. " +
+  "Если вопрос про боль или здоровье — советуй обратиться к врачу. " +
+  "Не назначай медицинские препараты и экстремальные диеты.";
 
 function addMsg(text, cls){
   const wrap = document.getElementById("chatWrap");
+  if(!wrap) return null;
   const div = document.createElement("div");
   div.className = "msg " + cls;
   div.textContent = text;
@@ -896,97 +1032,124 @@ function addMsg(text, cls){
   return div;
 }
 
-async function askGemini(question){
+function askGemini(question){
   if(!apiKey){
     addMsg("Чтобы включить ИИ, добавьте ключ Gemini в разделе «Профиль». Ключ бесплатный: aistudio.google.com/apikey", "bot");
     return;
   }
+
   const typing = addMsg("печатает...", "bot typing");
 
   const userContext = profile
-    ? `Пользователь: ${profile.name}, ${profile.age} лет, рост ${profile.height} см, вес ${profile.weight} кг. ` +
-      `Цели: ${profile.goals.map(g=>GOAL_LABELS[g]).join(", ")}. Интенсивность: ${INTENSITY[profile.intensity].label}. ` +
-      `Целевой вес: ${profile.targetWeight} кг за ${profile.weeks} недель.`
+    ? "Пользователь: " + profile.name + ", " + profile.age + " лет, рост " + profile.height +
+      " см, вес " + profile.weight + " кг. Цели: " +
+      profile.goals.map(function(g){ return GOAL_LABELS[g]; }).join(", ") +
+      ". Интенсивность: " + INTENSITY[profile.intensity].label +
+      ". Целевой вес: " + profile.targetWeight + " кг за " + profile.weeks + " недель."
     : "";
 
-  try{
-    const res = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey,
-      {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          systemInstruction: {parts: [{text: SYSTEM_PROMPT}]},
-          contents: [{
-            parts: [{text: userContext + "\n\nВопрос: " + question}]
-          }],
-          generationConfig: {temperature: 0.7, maxOutputTokens: 800}
-        })
-      }
-    );
+  const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;
 
+  fetch(url, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      systemInstruction: {parts: [{text: SYSTEM_PROMPT}]},
+      contents: [{parts: [{text: userContext + "\n\nВопрос: " + question}]}],
+      generationConfig: {temperature: 0.7, maxOutputTokens: 800}
+    })
+  })
+  .then(function(res){
     if(!res.ok){
-      const errText = await res.text();
-      typing.remove();
-      addMsg("Ошибка API (" + res.status + "). Проверьте ключ или попробуйте позже.\n\n" + errText.slice(0, 200), "bot");
-      return;
+      return res.text().then(function(t){
+        throw new Error("HTTP " + res.status + ": " + t.slice(0, 200));
+      });
     }
-
-    const data = await res.json();
-    const answer =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "Не удалось получить ответ.";
-    typing.remove();
+    return res.json();
+  })
+  .then(function(data){
+    let answer = "Не удалось получить ответ.";
+    try{
+      answer = data.candidates[0].content.parts[0].text;
+    }catch(e){}
+    if(typing) typing.remove();
     addMsg(answer, "bot");
-  }catch(e){
-    typing.remove();
-    addMsg("Ошибка сети: " + e.message, "bot");
-  }
+  })
+  .catch(function(e){
+    if(typing) typing.remove();
+    addMsg("Ошибка: " + e.message + "\n\nПроверьте ключ в разделе «Профиль».", "bot");
+  });
 }
 
-document.getElementById("chatSend").onclick = ()=>{
-  const input = document.getElementById("chatInput");
-  const q = input.value.trim();
-  if(!q) return;
-  addMsg(q, "user");
-  input.value = "";
-  askGemini(q);
-};
-
-document.getElementById("chatInput").addEventListener("keydown", (e)=>{
-  if(e.key === "Enter") document.getElementById("chatSend").click();
-});
-
-document.querySelectorAll(".chat-hints .chip").forEach(c=>{
-  c.onclick = ()=>{
-    document.getElementById("chatInput").value = c.textContent;
-    document.getElementById("chatSend").click();
+const chatSendEl = document.getElementById("chatSend");
+if(chatSendEl){
+  chatSendEl.onclick = function(){
+    const input = document.getElementById("chatInput");
+    if(!input) return;
+    const q = input.value.trim();
+    if(!q) return;
+    addMsg(q, "user");
+    input.value = "";
+    askGemini(q);
   };
-});
+}
 
-/* ---------- РЕГИСТРАЦИЯ SERVICE WORKER ---------- */
+const chatInputEl = document.getElementById("chatInput");
+if(chatInputEl){
+  chatInputEl.addEventListener("keydown", function(e){
+    if(e.key === "Enter" && chatSendEl) chatSendEl.click();
+  });
+}
+
+const hintChips = document.querySelectorAll(".chat-hints .chip");
+for(let i = 0; i < hintChips.length; i++){
+  hintChips[i].onclick = function(){
+    const input = document.getElementById("chatInput");
+    if(!input) return;
+    input.value = hintChips[i].textContent;
+    if(chatSendEl) chatSendEl.click();
+  };
+}
+
+/* ---------- SERVICE WORKER ---------- */
 if("serviceWorker" in navigator){
-  window.addEventListener("load", ()=>{
-    navigator.serviceWorker.register("sw.js").catch(()=>{});
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("sw.js").catch(function(){});
   });
 }
 
 /* ---------- СТАРТ ---------- */
-window.addEventListener("load", ()=>{
-  setTimeout(()=>{
-    document.getElementById("splash").classList.add("hide");
+function hideSplash(){
+  const s = document.getElementById("splash");
+  if(s) s.classList.add("hide");
+}
 
-    if(profile){
+window.addEventListener("error", function(e){
+  console.error("Ошибка приложения:", e.message);
+  hideSplash();
+});
+
+window.addEventListener("load", function(){
+  setTimeout(hideSplash, 400);
+
+  try{
+    if(profile && profile.goals && profile.goals.length){
       historyStack = [];
       show("home");
       renderHome();
-      buildReminderDays();
       scheduleReminder();
     } else {
       show("onboarding");
       renderOnbStep();
     }
-  }, 900);
+  }catch(err){
+    console.error("Ошибка запуска:", err);
+    const s = document.getElementById("splash");
+    if(s){
+      s.classList.remove("hide");
+      s.innerHTML = '<div class="logo">⚠️</div>' +
+        '<p class="splash-sub">Ошибка: ' + err.message + '</p>' +
+        '<button class="btn btn-primary" onclick="localStorage.clear();location.reload()">Сбросить данные</button>';
+    }
+  }
 });
-
-function buildReminderDays(){ /* зарезервировано */ }
