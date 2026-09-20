@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171717">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Тренажёр — фитнес-приложение</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ЭКРАН ЗАГРУЗКИ -->
+<div id="splash" class="splash">
+  <div class="logo">🏋️</div>
+  <h1 class="splash-title">ТРЕНАЖЁР</h1>
+  <p class="splash-sub">Загрузка...</p>
+</div>
+
+<!-- ШАПКА -->
+<header class="topbar">
+  <button class="icon-btn" id="backBtn" style="display:none">←</button>
+  <h2 id="pageTitle">Главная</h2>
+  <button class="icon-btn" id="menuBtn">⋮</button>
+</header>
+
+<!-- ЭКРАН 1: ОНБОРДИНГ (ПРОФИЛЬ) -->
+<section id="screen-onboarding" class="screen hidden">
+  <div class="onb-wrap">
+    <div class="step-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+    <!-- ШАГ 1 -->
+    <div class="onb-step" data-step="1">
+      <h2 class="onb-h2">Ваши параметры</h2>
+      <p class="onb-p">Нужны для расчёта калорий и прогресса</p>
+      <label>Имя</label>
+      <input type="text" id="obName" placeholder="Например, Иван">
+      <label>Пол</label>
+      <select id="obGender">
+        <option value="male">Мужчина</option>
+        <option value="female">Женщина</option>
+      </select>
+      <label>Возраст (лет)</label>
+      <input type="number" id="obAge" placeholder="25" min="14" max="90">
+      <label>Рост (см)</label>
+      <input type="number" id="obHeight" placeholder="175" min="120" max="230">
+      <label>Вес (кг)</label>
+      <input type="number" id="obWeight" placeholder="70" step="0.1" min="30" max="250">
+    </div>
+
+    <!-- ШАГ 2 -->
+    <div class="onb-step hidden" data-step="2">
+      <h2 class="onb-h2">Что тренируем?</h2>
+      <p class="onb-p">Выберите одну или несколько целей</p>
+      <div class="chip-grid" id="goalChips">
+        <button class="chip" data-goal="glutes">🍑 Ягодицы</button>
+        <button class="chip" data-goal="abs">🔸 Плоский живот</button>
+        <button class="chip" data-goal="legs">🦵 Ноги</button>
+        <button class="chip" data-goal="back">🔙 Спина</button>
+        <button class="chip" data-goal="chest">💪 Грудь</button>
+        <button class="chip" data-goal="arms">🦾 Руки</button>
+        <button class="chip" data-goal="shoulders">🎯 Плечи</button>
+        <button class="chip" data-goal="fullbody">🔥 Всё тело</button>
+      </div>
+    </div>
+
+    <!-- ШАГ 3 -->
+    <div class="onb-step hidden" data-step="3">
+      <h2 class="onb-h2">Интенсивность</h2>
+      <p class="onb-p">От неё зависит объём и отдых в программе</p>
+      <div class="radio-list" id="intensityList">
+        <button class="radio-card" data-int="light">
+          <span class="rc-title">Лёгкая</span>
+          <span class="rc-desc">3 подхода · отдых 60 сек · для новичков</span>
+        </button>
+        <button class="radio-card" data-int="medium">
+          <span class="rc-title">Средняя</span>
+          <span class="rc-desc">4 подхода · отдых 45 сек · есть опыт</span>
+        </button>
+        <button class="radio-card" data-int="high">
+          <span class="rc-title">Высокая</span>
+          <span class="rc-desc">5 подходов · отдых 30 сек · продвинутый</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ШАГ 4 -->
+    <div class="onb-step hidden" data-step="4">
+      <h2 class="onb-h2">Цель на период</h2>
+      <p class="onb-p">Укажите желаемый результат и срок</p>
+      <label>Целевой вес (кг)</label>
+      <input type="number" id="obTargetWeight" placeholder="65" step="0.1" min="30" max="250">
+      <label>Срок (недель)</label>
+      <select id="obWeeks">
+        <option value="4">4 недели — быстрый старт</option>
+        <option value="8" selected>8 недель — оптимально</option>
+        <option value="12">12 недель — устойчиво</option>
+        <option value="16">16 недель — марафон</option>
+      </select>
+      <label>Дней тренировок в неделю</label>
+      <select id="obDays">
+        <option value="2">2 дня</option>
+        <option value="3" selected>3 дня</option>
+        <option value="4">4 дня</option>
+        <option value="5">5 дней</option>
+      </select>
+      <div class="notice" id="planPreview"></div>
+    </div>
+
+    <!-- ШАГ 5: ИИ КЛЮЧ -->
+    <div class="onb-step hidden" data-step="5">
+      <h2 class="onb-h2">ИИ-ассистент</h2>
+      <p class="onb-p">Необязательно. Можно пропустить и добавить позже.</p>
+      <div class="notice">
+        <b>Как получить бесплатный ключ:</b><br>
+        1. Откройте <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a><br>
+        2. Войдите в Google-аккаунт<br>
+        3. Нажмите <b>Create API key</b><br>
+        4. Скопируйте ключ и вставьте ниже<br><br>
+        Карта не требуется. Ключ хранится только в вашем телефоне.
+      </div>
+      <label>API-ключ Gemini</label>
+      <input type="password" id="obApiKey" placeholder="AIza...">
+    </div>
+
+    <div class="onb-nav">
+      <button class="btn btn-ghost" id="onbPrev" style="visibility:hidden">Назад</button>
+      <button class="btn btn-primary" id="onbNext">Далее</button>
+    </div>
+  </div>
+</section>
+
+<!-- ЭКРАН 2: ГЛАВНАЯ -->
+<section id="screen-home" class="screen hidden">
+  <div class="card card-hero">
+    <div class="hero-top">
+      <div>
+        <p class="hero-label" id="heroGreet">Добро пожаловать!</p>
+        <h2 class="hero-title" id="heroProgram">Upper body workout</h2>
+        <p class="hero-meta" id="heroMeta">5 упражнений</p>
+      </div>
+      <div class="hero-time">
+        <span id="heroDuration">30</span>
+        <small>мин</small>
+      </div>
+    </div>
+    <button class="btn btn-dark" id="startTodayBtn">▶ Начать тренировку</button>
+  </div>
+
+  <h3 class="section-h">Ваш прогресс</h3>
+  <div class="grid-2">
+    <div class="card stat-card">
+      <div class="stat-icon lime">🔥</div>
+      <p class="stat-label">Калорий всего</p>
+      <p class="stat-value" id="statTotalKcal">0</p>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-icon lime">🏋️</div>
+      <p class="stat-label">Тренировок</p>
+      <p class="stat-value" id="statWorkouts">0</p>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-icon lime">⚖️</div>
+      <p class="stat-label">Вес сейчас</p>
+      <p class="stat-value" id="statWeight">—</p>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-icon lime">🎯</div>
+      <p class="stat-label">До цели</p>
+      <p class="stat-value" id="statToGoal">—</p>
+    </div>
+  </div>
+
+  <h3 class="section-h">Тренировки по целям</h3>
+  <div class="workout-list" id="workoutList"></div>
+
+  <h3 class="section-h">Недельный отчёт</h3>
+  <div class="card" id="weeklyReport"></div>
+</section>
+
+<!-- ЭКРАН 3: ТРЕНИРОВКА -->
+<section id="screen-workout" class="screen hidden">
+  <div class="card">
+    <p class="hero-label" id="wTitle">Тренировка</p>
+    <div class="progress-bar"><div class="progress-fill" id="wProgress"></div></div>
+    <p class="center muted" id="wCounter">1 / 5</p>
+  </div>
+
+  <div class="card card-exercise">
+    <div class="ex-emoji" id="wEmoji">🏋️</div>
+    <h2 class="ex-name" id="wName">Упражнение</h2>
+    <p class="ex-target" id="wTarget">Цель: ягодицы</p>
+    <p class="ex-desc" id="wDesc">Описание</p>
+  </div>
+
+  <div class="card card-timer">
+    <div class="timer-mode-toggle">
+      <button class="tm-btn active" data-mode="reps">Подходы</button>
+      <button class="tm-btn" data-mode="timer">Таймер</button>
+    </div>
+
+    <div id="modeReps">
+      <p class="center muted">Подход <span id="setNow">1</span> из <span id="setTotal">3</span></p>
+      <p class="rep-count" id="repCount">12</p>
+      <p class="center muted">повторений</p>
+      <button class="btn btn-primary btn-wide" id="doneSetBtn">Подход выполнен</button>
+    </div>
+
+    <div id="modeTimer" class="hidden">
+      <div class="circle-timer">
+        <svg viewBox="0 0 200 200">
+          <circle class="ct-bg" cx="100" cy="100" r="88"></circle>
+          <circle class="ct-fg" id="ctFg" cx="100" cy="100" r="88"></circle>
+        </svg>
+        <div class="ct-text" id="ctText">00:00</div>
+      </div>
+      <p class="center muted" id="timerPhase">Работа</p>
+      <button class="btn btn-primary btn-wide" id="timerToggle">▶ Старт</button>
+      <button class="btn btn-ghost btn-wide" id="timerReset">Сбросить</button>
+    </div>
+  </div>
+
+  <div class="row-btns">
+    <button class="btn btn-ghost" id="prevEx">← Пред.</button>
+    <button class="btn btn-lime" id="nextEx">След. →</button>
+  </div>
+  <button class="btn btn-danger btn-wide" id="finishEarly">Завершить тренировку</button>
+</section>
+
+<!-- ЭКРАН 4: РЕЗУЛЬТАТ -->
+<section id="screen-result" class="screen hidden">
+  <div class="card card-hero center">
+    <div class="ex-emoji big">🎉</div>
+    <h2 class="hero-title">Тренировка завершена!</h2>
+    <p class="hero-meta" id="rExerciseCount">5 упражнений</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card stat-card">
+      <div class="stat-icon lime">🔥</div>
+      <p class="stat-label">Сожжено</p>
+      <p class="stat-value" id="rKcal">0</p>
+      <p class="stat-label">ккал</p>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-icon lime">⏱</div>
+      <p class="stat-label">Длительность</p>
+      <p class="stat-value" id="rDuration">0</p>
+      <p class="stat-label">мин</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="section-h" style="margin-top:0">Обновить параметры</h3>
+    <label>Текущий вес (кг)</label>
+    <input type="number" id="rWeight" step="0.1">
+    <button class="btn btn-primary btn-wide" id="saveResultBtn">Сохранить в дневник</button>
+  </div>
+
+  <button class="btn btn-ghost btn-wide" id="goHomeBtn">На главную</button>
+</section>
+
+<!-- ЭКРАН 5: ПРОГРЕСС -->
+<section id="screen-progress" class="screen hidden">
+  <div class="card">
+    <h3 class="section-h" style="margin-top:0">Еженедельный отчёт</h3>
+    <div id="progressReport"></div>
+  </div>
+  <div class="card">
+    <h3 class="section-h" style="margin-top:0">История тренировок</h3>
+    <div id="historyList"></div>
+  </div>
+  <div class="card">
+    <h3 class="section-h" style="margin-top:0">Дневник веса</h3>
+    <div id="weightList"></div>
+  </div>
+</section>
+
+<!-- ЭКРАН 6: ИИ-АССИСТЕНТ -->
+<section id="screen-ai" class="screen hidden">
+  <div class="chat-wrap" id="chatWrap">
+    <div class="msg bot">Привет! Я твой ИИ-ассистент. Спроси что угодно про тренировки, упражнения или питание.</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Напишите вопрос...">
+    <button class="btn btn-lime square" id="chatSend">➤</button>
+  </div>
+  <div class="chat-hints">
+    <button class="chip small">Составь тренировку на ягодицы</button>
+    <button class="chip small">Как правильно делать планку?</button>
+    <button class="chip small">Сколько калорий в яйце?</button>
+  </div>
+</section>
+
+<!-- ЭКРАН 7: ПРОФИЛЬ/НАСТРОЙКИ -->
+<section id="screen-settings" class="screen hidden">
+  <div class="card">
+    <h3 class="section-h" style="margin-top:0">Параметры</h3>
+    <label>Имя</label><input type="text" id="stName">
+    <label>Возраст</label><input type="number" id="stAge">
+    <label>Рост (см)</label><input type="number" id="stHeight">
+    <label>Пол</label>
+    <select id="stGender">
+      <option value="male">Мужчина</option>
+      <option value="female">Женщина</option>
+    </select>
+    <button class="btn btn-primary btn-wide" id="saveSettings">Сохранить</button>
+  </div>
+
+  <div class="card">
+    <h3 class="section-h" style="margin-top:0">Цели</h3>
+    <div class="chip-grid" id="settingsGoals"></div>
+    <label>Интенсивность</label>
+    <select id="stIntensity">
+      <option value="light">Лёгкая</option>
+      <option value="medium">Средняя</option>
+      <option value="high">Высокая</option>
+    </select>
+    <label>Целевой вес (кг)</label><input type="number" id="stTargetWeight" step="0.1">
+    <label>Срок (недель)</label><input type="number" id="stWeeks">
+  </div>
+
+  <div class="card">
+    <h3 class="section-h" style="margin-top:0">ИИ-ключ Gemini</h3>
+    <input type="password" id="stApiKey" placeholder="AIza...">
+    <p class="muted small">Хранится только на вашем устройстве.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="section-h" style="margin-top:0">Напоминания</h3>
+    <label>Время тренировки</label>
+    <input type="time" id="stReminderTime" value="18:00">
+    <label>Дни недели</label>
+    <div class="chip-grid small-chips" id="reminderDays">
+      <button class="chip small" data-day="1">Пн</button>
+      <button class="chip small" data-day="2">Вт</button>
+      <button class="chip small" data-day="3">Ср</button>
+      <button class="chip small" data-day="4">Чт</button>
+      <button class="chip small" data-day="5">Пт</button>
+      <button class="chip small" data-day="6">Сб</button>
+      <button class="chip small" data-day="0">Вс</button>
+    </div>
+    <button class="btn btn-lime btn-wide" id="enableNotif">🔔 Включить уведомления</button>
+    <p class="muted small" id="notifStatus"></p>
+  </div>
+
+  <div class="card">
+    <button class="btn btn-danger btn-wide" id="resetApp">Сбросить все данные</button>
+  </div>
+</section>
+
+<div class="spacer"></div>
+
+<!-- НИЖНЕЕ МЕНЮ -->
+<nav class="bottombar" id="bottombar">
+  <button class="nav-btn active" data-nav="home"><span>🏠</span><small>Главная</small></button>
+  <button class="nav-btn nav-fab" data-nav="workout"><span>▶</span></button>
+  <button class="nav-btn" data-nav="ai"><span>🤖</span><small>ИИ</small></button>
+  <button class="nav-btn" data-nav="progress"><span>📊</span><small>Прогресс</small></button>
+  <button class="nav-btn" data-nav="settings"><span>👤</span><small>Профиль</small></button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>
